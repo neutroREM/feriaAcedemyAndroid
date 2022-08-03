@@ -65,45 +65,41 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                loginUser();
-                Navigation.findNavController(view).navigate(R.id.nav_log_to_message);
-            }
-        });
-    }
+                String email = binding.loginEmail.getEditText().getText().toString();
+                String password = binding.loginPassword.getEditText().getText().toString();
 
-    public void loginUser(){
+                UserService service = RetrofitClient.getRetrofitInstance().create(UserService.class);
+                Call<User> call = service.loginUser(email, password);
+                call.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()){
 
-        String email = binding.loginEmail.getEditText().getText().toString();
-        String password = binding.loginPassword.getEditText().getText().toString();
-
-        UserService service = RetrofitClient.getRetrofitInstance().create(UserService.class);
-        Call<User> call = service.loginUser(email, password);
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()){
-
-                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.code()));
-                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.body().getName()));
+                            Log.e(TAG, "onResponse: " + new Gson().toJson(response.code()));
+                            Log.e(TAG, "onResponse: " + new Gson().toJson(response.body().getName()));
+                            Navigation.findNavController(view).navigate(R.id.nav_log_to_message);
 
 
-                }else{
-                    Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.code()));
-                    try {
-                        Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.errorBody().string()) );
+                        }else{
+                            Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.code()));
+                            try {
+                                Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.errorBody().string()) );
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Log.e(TAG, "onFailure : ", t.getCause());
-                Log.e(TAG, "onFailure : " +  new Gson().toJson(t.getMessage()));
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Log.e(TAG, "onFailure : ", t.getCause());
+                        Log.e(TAG, "onFailure : " +  new Gson().toJson(t.getMessage()));
+                    }
+                });
             }
         });
     }
+
 
     @Override
     public void onDestroyView() {
