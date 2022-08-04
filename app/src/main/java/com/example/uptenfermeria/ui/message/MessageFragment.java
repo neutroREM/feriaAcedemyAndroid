@@ -4,25 +4,16 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.text.util.LinkifyCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.SavedStateHandle;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavBackStackEntry;
-import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.uptenfermeria.R;
+<<<<<<< HEAD
 import com.example.uptenfermeria.methods.RetrofitClient;
 import com.example.uptenfermeria.methods.UserService;
 import com.example.uptenfermeria.methods.WaqiClient;
@@ -31,12 +22,13 @@ import com.example.uptenfermeria.models.User;
 import com.example.uptenfermeria.models.Waqi;
 import com.example.uptenfermeria.models.WaqiAttributions;
 import com.example.uptenfermeria.ui.slideshow.SlideshowFragment;
+=======
+import com.example.uptenfermeria.methods.WaqiClient;
+import com.example.uptenfermeria.methods.WaqiService;
+import com.example.uptenfermeria.models.Waqi;
+import com.example.uptenfermeria.models.WaqiAttributions;
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
 import com.example.uptenfermeria.ui.slideshow.SlideshowViewModel;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,11 +80,14 @@ public class MessageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
 
     }
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MessageFragment";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -109,7 +104,12 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+<<<<<<< HEAD
         Button btnEnviar = view.findViewById(R.id.btn_buscar);
+=======
+
+        Button btnEnviar = view.findViewById(R.id.btn_mensaje);
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +117,42 @@ public class MessageFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
 
+    }
+
+    public void getWaqi(){
+        WaqiService waqiService = WaqiClient.getRetrofitWaqiInstance().create(WaqiService.class);
+        Call<Waqi> call = waqiService.getClima("London");
+
+        call.enqueue(new Callback<Waqi>() {
+            @Override
+            public void onResponse(Call<Waqi> call, Response<Waqi> response) {
+                if (response.isSuccessful()) {
+
+                    Log.e(TAG, "onResponse" + response.code()+ " "+ response.body().getData().getAqi());
+
+                    String waqiCities = response.body().getData().getCity().getName();
+                    WaqiAttributions[] waqis = response.body().getData().getAttributions();
+                    for (WaqiAttributions attributions: waqis){
+                        Log.e(TAG, "onResponseHola" + attributions.getName()+ " " + waqiCities );
+                    }
+
+
+
+                }else{
+                    Log.e(TAG, "onFail" + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Waqi> call, Throwable t) {
+                Log.e(TAG, "onFailure : ", t.getCause());
+            }
+        });
+=======
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
     }
 
     public void getWaqi(){
@@ -152,5 +187,38 @@ public class MessageFragment extends Fragment {
         });
     }
 
+    /**
+    public void sendMessage(final String title, final String message) {
 
+        UserService userService = RetrofitClient.getRetrofitInstance().create(UserService.class);
+        Call<User.messages> call = userService.sendMessage(title, message);
+
+        call.enqueue(new Callback<User.messages>() {
+            @Override
+            public void onResponse(Call<User.messages> call, Response<User.messages> response) {
+                if (response.isSuccessful()) {
+
+                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.code()));
+                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.body().getMessage().getUser_id()));
+
+                }else {
+                    Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.code()));
+                    try {
+                        Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.errorBody().string()) );
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User.messages> call, Throwable t) {
+                Log.e(TAG, "onFailure : ", t.getCause());
+                Log.e(TAG, "onFailure : " +  new Gson().toJson(t.getMessage()));
+
+            }
+        });
+    }
+     **/
 }

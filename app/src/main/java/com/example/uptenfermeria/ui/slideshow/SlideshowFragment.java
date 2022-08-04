@@ -53,8 +53,11 @@ public class SlideshowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

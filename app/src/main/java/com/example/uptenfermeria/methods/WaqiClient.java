@@ -6,6 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WaqiClient {
+
     private static Retrofit retrofit;
     private static String BASE_URL = "https://api.waqi.info/";
 
