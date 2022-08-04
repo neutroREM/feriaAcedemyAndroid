@@ -30,4 +30,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="message_tittle">Buscar Cuidad</string>
     <string name="message_body">Explica una descripción</string>
+    <string name="ecology_upt">ECOLOGY UPT</string>
+    <string name="cuidemos_el_medio_ambiente_hagamos_conciencia">CUIDEMOS EL MEDIO AMBIENTE, HAGAMOS CONCIENCIA</string>
+
 </resources>
