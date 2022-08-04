@@ -11,7 +11,7 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Registro</string>
     <string name="menu_slideshow">Ingreso</string>
-    <string name="menu_mensaje">Buscar Ciudad</string>
+    <string name="menu_mensaje">Envia tus sintomas</string>
 
     <string name="register_name">Nombre</string>
     <string name="register_secondName">Apellido</string>
@@ -24,11 +24,15 @@
     <string name="btn_reg">Registrar</string>
     <string name="btn_log">Ingresar</string>
     <string name="btn_send">Enviar</string>
+<<<<<<< HEAD
     <string name="btn_city">Buscar</string>
     <string name="txt_ecalada">Escalada de Calidad del Aire</string>
+=======
+    <string name="btn_message">Enviar</string>
+>>>>>>> 68938882f7725f1c7b5c68de2a5b8f7ed37c615d
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="message_tittle">Buscar Cuidad</string>
+    <string name="message_tittle">Malestar o sintoma</string>
     <string name="message_body">Explica una descripción</string>
 </resources>
