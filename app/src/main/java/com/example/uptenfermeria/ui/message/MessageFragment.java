@@ -114,7 +114,7 @@ public class MessageFragment extends Fragment {
                     String waqiCities = response.body().getData().getCity().getName();
                     WaqiAttributions[] waqis = response.body().getData().getAttributions();
                     for (WaqiAttributions attributions: waqis){
-                        Log.e(TAG, "onResponse" + attributions.getName()+ " " + waqiCities );
+                        Log.e(TAG, "onResponseHola" + attributions.getName()+ " " + waqiCities );
                     }
 
 
