@@ -24,10 +24,20 @@
     <string name="btn_reg">Registrar</string>
     <string name="btn_log">Ingresar</string>
     <string name="btn_send">Enviar</string>
+<<<<<<< HEAD
     <string name="btn_city">Buscar</string>
     <string name="txt_ecalada">Escalada de Calidad del Aire</string>
     <string name="btn_message">Enviar</string>
  
+=======
+
+    <string name="btn_city">Buscar</string>
+    <string name="txt_ecalada">Escalada de Calidad del Aire</string>
+
+    <string name="btn_message">Enviar</string>
+
+
+>>>>>>> 21afe2cd1e64c304415bb1f1d04b8efcfb826d08
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="message_tittle">Malestar o sintoma</string>

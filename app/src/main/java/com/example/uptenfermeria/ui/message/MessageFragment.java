@@ -13,10 +13,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.uptenfermeria.R;
+<<<<<<< HEAD
+import com.example.uptenfermeria.methods.RetrofitClient;
+import com.example.uptenfermeria.methods.UserService;
+import com.example.uptenfermeria.methods.WaqiClient;
+import com.example.uptenfermeria.methods.WaqiService;
+import com.example.uptenfermeria.models.User;
+import com.example.uptenfermeria.models.Waqi;
+import com.example.uptenfermeria.models.WaqiAttributions;
+import com.example.uptenfermeria.ui.slideshow.SlideshowFragment;
+=======
 import com.example.uptenfermeria.methods.WaqiClient;
 import com.example.uptenfermeria.methods.WaqiService;
 import com.example.uptenfermeria.models.Waqi;
 import com.example.uptenfermeria.models.WaqiAttributions;
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
 import com.example.uptenfermeria.ui.slideshow.SlideshowViewModel;
 
 import retrofit2.Call;
@@ -69,6 +80,10 @@ public class MessageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
 
     }
 
@@ -89,8 +104,12 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+<<<<<<< HEAD
+        Button btnEnviar = view.findViewById(R.id.btn_buscar);
+=======
 
         Button btnEnviar = view.findViewById(R.id.btn_mensaje);
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +117,42 @@ public class MessageFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
+
+    }
+
+    public void getWaqi(){
+        WaqiService waqiService = WaqiClient.getRetrofitWaqiInstance().create(WaqiService.class);
+        Call<Waqi> call = waqiService.getClima("London");
+
+        call.enqueue(new Callback<Waqi>() {
+            @Override
+            public void onResponse(Call<Waqi> call, Response<Waqi> response) {
+                if (response.isSuccessful()) {
+
+                    Log.e(TAG, "onResponse" + response.code()+ " "+ response.body().getData().getAqi());
+
+                    String waqiCities = response.body().getData().getCity().getName();
+                    WaqiAttributions[] waqis = response.body().getData().getAttributions();
+                    for (WaqiAttributions attributions: waqis){
+                        Log.e(TAG, "onResponseHola" + attributions.getName()+ " " + waqiCities );
+                    }
+
+
+
+                }else{
+                    Log.e(TAG, "onFail" + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Waqi> call, Throwable t) {
+                Log.e(TAG, "onFailure : ", t.getCause());
+            }
+        });
+=======
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
     }
 
     public void getWaqi(){

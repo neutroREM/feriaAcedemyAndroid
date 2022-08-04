@@ -8,6 +8,17 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+<<<<<<< HEAD
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_buscar"
+=======
     <TextView
 
         android:layout_width="match_parent"
@@ -22,10 +33,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
+<<<<<<< HEAD
+        <EditText
+            android:id="@+id/txt_place"
+=======
     <LinearLayout
 
         android:layout_width="408dp"
@@ -44,6 +60,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -81,4 +98,27 @@
     </LinearLayout>
 
 
+<<<<<<< HEAD
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_buscar"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="131dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="33dp"
+
+        android:text="@string/btn_city"
+        android:textColorLink="#FFC107"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_baseline_search_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_title"
+        app:layout_constraintTop_toTopOf="@+id/user_title"
+        app:strokeColor="#25CE00" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+=======
 </FrameLayout>
+>>>>>>> 39b0a6610cfc6424056a6186cdf51b1c3e68d199
