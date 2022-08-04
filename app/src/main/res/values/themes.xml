@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.UptEnfermeria" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#308446</item>
+        <item name="colorPrimary">#F8672D</item>
         <item name="colorPrimaryVariant">#E86C32</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

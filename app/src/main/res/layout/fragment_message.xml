@@ -1,56 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.message.MessageFragment">
-
 
     <!-- TODO: Update blank fragment layout -->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_title"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="11dp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hello_blank_fragment"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_search_24">
+        app:layout_constraintVertical_bias="0.038" />
 
-        <EditText
+    <LinearLayout
+
+        android:layout_width="408dp"
+        android:layout_height="523dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.374"
+        >
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_title"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:hint="@string/message_tittle"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="75dp" />
+            app:startIconDrawable="@drawable/ic_title_message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_message"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="151dp"
+            android:layout_marginTop="15dp"
+            android:hint="@string/message_body"
+            app:startIconDrawable="@drawable/ic_message_message">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="141dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_mensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/btn_message" />
+
+    </LinearLayout>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
-        android:layout_width="131dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="33dp"
-
-        android:text="@string/btn_city"
-        android:textColorLink="#FFC107"
-        android:textSize="16sp"
-        app:icon="@drawable/ic_baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_title"
-        app:layout_constraintTop_toTopOf="@+id/user_title"
-        app:strokeColor="#25CE00" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
