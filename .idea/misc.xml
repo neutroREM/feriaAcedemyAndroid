@@ -22,6 +22,7 @@
         <entry key="..\:/Users/farao/AndroidStudioProjects/uptEnfermeria/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/farao/AndroidStudioProjects/uptEnfermeria/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.101" />
         <entry key="..\:/Users/farao/AndroidStudioProjects/uptEnfermeria/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.101" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_title_message.xml" value="0.1" />
@@ -29,12 +30,14 @@
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.18177083333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18177083333333333" />
-        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/menu/main.xml" value="0.18177083333333333" />
+=======
+>>>>>>> 68938882f7725f1c7b5c68de2a5b8f7ed37c615d
       </map>
     </option>
   </component>
