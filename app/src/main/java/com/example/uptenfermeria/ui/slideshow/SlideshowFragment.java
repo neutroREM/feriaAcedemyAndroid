@@ -46,19 +46,13 @@ public class SlideshowFragment extends Fragment {
 
     }
 
-    private SlideshowViewModel slideshowViewModel;
-    private SavedStateHandle savedStateHandle;
-    public static String LOGIN_SUCCESSFUL = "LOGIN_SUCCESSFUL";
+
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        slideshowViewModel = new ViewModelProvider(requireActivity()).get(SlideshowViewModel.class);
-        savedStateHandle = Navigation.findNavController(view)
-                        .getPreviousBackStackEntry().getSavedStateHandle();
-        savedStateHandle.set(LOGIN_SUCCESSFUL, false);
 
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {

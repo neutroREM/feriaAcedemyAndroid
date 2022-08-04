@@ -83,26 +83,12 @@ public class MessageFragment extends Fragment {
         // Required empty public constructor
     }
 
-    TextInputLayout title, message;
-    Button btnEnviar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavController navController = NavHostFragment.findNavController(this);
 
-        NavBackStackEntry navBackStackEntry = navController.getCurrentBackStackEntry();
-        SavedStateHandle savedStateHandle = navBackStackEntry.getSavedStateHandle();
-        savedStateHandle.getLiveData(SlideshowFragment.LOGIN_SUCCESSFUL)
-                .observe(navBackStackEntry, (Observer<? super Object>) success ->{
-                    if (success == null){
-                        int starDestination = navController.getGraph().getStartDestinationId();
-                        NavOptions navOptions = new NavOptions.Builder()
-                                .setPopUpTo(starDestination, true)
-                                .build();
-                        navController.navigate(starDestination, null, navOptions);
-                    }
-                });
 
     }
 
