@@ -132,51 +132,9 @@ public class MessageFragment extends Fragment {
         });
 
 
-        TextInputLayout title = view.findViewById(R.id.user_title);
-        TextInputLayout message = view.findViewById(R.id.user_message);
-        Button btnEnviar = view.findViewById(R.id.btn_mensaje);
-        btnEnviar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMessage(title.getEditText().getText().toString(),
-                message.getEditText().getText().toString());
 
-
-            }
-        });
 
     }
 
-    public void sendMessage(final String title, final String message) {
 
-        UserService userService = RetrofitClient.getRetrofitInstance().create(UserService.class);
-        Call<User.messages> call = userService.sendMessage(title, message);
-
-        call.enqueue(new Callback<User.messages>() {
-            @Override
-            public void onResponse(Call<User.messages> call, Response<User.messages> response) {
-                if (response.isSuccessful()) {
-
-                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.code()));
-                    Log.e(TAG, "onResponse: " + new Gson().toJson(response.body().getMessage().getUser_id()));
-
-                }else {
-                    Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.code()));
-                    try {
-                        Log.e(TAG, "onResponseFail: " + new Gson().toJson(response.errorBody().string()) );
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User.messages> call, Throwable t) {
-                Log.e(TAG, "onFailure : ", t.getCause());
-                Log.e(TAG, "onFailure : " +  new Gson().toJson(t.getMessage()));
-
-            }
-        });
-    }
 }
