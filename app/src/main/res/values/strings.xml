@@ -25,6 +25,7 @@
     <string name="btn_log">Ingresar</string>
     <string name="btn_send">Enviar</string>
     <string name="btn_city">Buscar</string>
+    <string name="txt_ecalada">Escalada de Calidad del Aire</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
