@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".ui.message.MessageFragment">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_baseline_search_24">
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- TODO: Update blank fragment layout -->
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/user_title"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:layout_margin="@dimen/input_margin"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                app:startIconDrawable="@drawable/ic_baseline_search_24">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/message_tittle"
-                    tools:layout_editor_absoluteX="25dp"
-                    tools:layout_editor_absoluteY="75dp"
-                    />
+            android:hint="@string/message_tittle"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="75dp" />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:text="@string/btn_city" />
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="131dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="33dp"
+
+        android:text="@string/btn_city"
+        android:textColorLink="#FFC107"
+        android:textSize="16sp"
+        app:icon="@drawable/ic_baseline_search_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_title"
+        app:layout_constraintTop_toTopOf="@+id/user_title"
+        app:strokeColor="#25CE00" />
 
 
-        </LinearLayout>
-    </ScrollView>
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
