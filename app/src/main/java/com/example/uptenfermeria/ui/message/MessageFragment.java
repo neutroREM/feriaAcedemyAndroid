@@ -25,7 +25,11 @@ import android.widget.Toast;
 import com.example.uptenfermeria.R;
 import com.example.uptenfermeria.methods.RetrofitClient;
 import com.example.uptenfermeria.methods.UserService;
+import com.example.uptenfermeria.methods.WaqiClient;
+import com.example.uptenfermeria.methods.WaqiService;
 import com.example.uptenfermeria.models.User;
+import com.example.uptenfermeria.models.Waqi;
+import com.example.uptenfermeria.models.WaqiAttributions;
 import com.example.uptenfermeria.ui.slideshow.SlideshowFragment;
 import com.example.uptenfermeria.ui.slideshow.SlideshowViewModel;
 import com.google.android.material.textfield.TextInputLayout;
@@ -119,21 +123,47 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        slideshowViewModel = new ViewModelProvider(requireActivity()).get(SlideshowViewModel.class);
-        final NavController navController = Navigation.findNavController(view);
-        slideshowViewModel.getUsers().observe(getViewLifecycleOwner(), (Observer<? super List<User>>) user -> {
-            if (user == null) {
-                navController.navigate(R.id.nav_slideshow);
-
-
-            } else {
-                Toast.makeText(getContext(), "as", Toast.LENGTH_LONG).show();
+        Button btnEnviar = view.findViewById(R.id.btn_buscar);
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getWaqi();
             }
         });
 
 
+    }
+
+    public void getWaqi(){
+        WaqiService waqiService = WaqiClient.getRetrofitWaqiInstance().create(WaqiService.class);
+        Call<Waqi> call = waqiService.getClima("London");
+
+        call.enqueue(new Callback<Waqi>() {
+            @Override
+            public void onResponse(Call<Waqi> call, Response<Waqi> response) {
+                if (response.isSuccessful()) {
+
+                    Log.e(TAG, "onResponse" + response.code()+ " "+ response.body().getData().getAqi());
+
+                    String waqiCities = response.body().getData().getCity().getName();
+                    WaqiAttributions[] waqis = response.body().getData().getAttributions();
+                    for (WaqiAttributions attributions: waqis){
+                        Log.e(TAG, "onResponseHola" + attributions.getName()+ " " + waqiCities );
+                    }
 
 
+
+                }else{
+                    Log.e(TAG, "onFail" + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Waqi> call, Throwable t) {
+                Log.e(TAG, "onFailure : ", t.getCause());
+            }
+        });
     }
 
 
