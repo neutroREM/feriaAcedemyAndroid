@@ -4,35 +4,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.text.util.LinkifyCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.SavedStateHandle;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavBackStackEntry;
-import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.uptenfermeria.R;
-import com.example.uptenfermeria.methods.RetrofitClient;
-import com.example.uptenfermeria.methods.UserService;
-import com.example.uptenfermeria.models.User;
-import com.example.uptenfermeria.ui.slideshow.SlideshowFragment;
+import com.example.uptenfermeria.methods.WaqiClient;
+import com.example.uptenfermeria.methods.WaqiService;
+import com.example.uptenfermeria.models.Waqi;
+import com.example.uptenfermeria.models.WaqiAttributions;
 import com.example.uptenfermeria.ui.slideshow.SlideshowViewModel;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,30 +64,15 @@ public class MessageFragment extends Fragment {
         // Required empty public constructor
     }
 
-    TextInputLayout title, message;
-    Button btnEnviar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NavController navController = NavHostFragment.findNavController(this);
-
-        NavBackStackEntry navBackStackEntry = navController.getCurrentBackStackEntry();
-        SavedStateHandle savedStateHandle = navBackStackEntry.getSavedStateHandle();
-        savedStateHandle.getLiveData(SlideshowFragment.LOGIN_SUCCESSFUL)
-                .observe(navBackStackEntry, (Observer<? super Object>) success ->{
-                    if (success == null){
-                        int starDestination = navController.getGraph().getStartDestinationId();
-                        NavOptions navOptions = new NavOptions.Builder()
-                                .setPopUpTo(starDestination, true)
-                                .build();
-                        navController.navigate(starDestination, null, navOptions);
-                    }
-                });
 
     }
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MessageFragment";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -119,34 +89,50 @@ public class MessageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        slideshowViewModel = new ViewModelProvider(requireActivity()).get(SlideshowViewModel.class);
-        final NavController navController = Navigation.findNavController(view);
-        slideshowViewModel.getUsers().observe(getViewLifecycleOwner(), (Observer<? super List<User>>) user -> {
-            if (user == null) {
-                navController.navigate(R.id.nav_slideshow);
 
-
-            } else {
-                Toast.makeText(getContext(), "as", Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-        TextInputLayout title = view.findViewById(R.id.user_title);
-        TextInputLayout message = view.findViewById(R.id.user_message);
         Button btnEnviar = view.findViewById(R.id.btn_mensaje);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage(title.getEditText().getText().toString(),
-                message.getEditText().getText().toString());
-
-
+                getWaqi();
             }
         });
 
     }
 
+    public void getWaqi(){
+        WaqiService waqiService = WaqiClient.getRetrofitWaqiInstance().create(WaqiService.class);
+        Call<Waqi> call = waqiService.getClima("London");
+
+        call.enqueue(new Callback<Waqi>() {
+            @Override
+            public void onResponse(Call<Waqi> call, Response<Waqi> response) {
+                if (response.isSuccessful()) {
+
+                    Log.e(TAG, "onResponse" + response.code()+ " "+ response.body().getData().getAqi());
+
+                    String waqiCities = response.body().getData().getCity().getName();
+                    WaqiAttributions[] waqis = response.body().getData().getAttributions();
+                    for (WaqiAttributions attributions: waqis){
+                        Log.e(TAG, "onResponse" + attributions.getName()+ " " + waqiCities );
+                    }
+
+
+
+                }else{
+                    Log.e(TAG, "onFail" + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Waqi> call, Throwable t) {
+                Log.e(TAG, "onFailure : ", t.getCause());
+            }
+        });
+    }
+
+    /**
     public void sendMessage(final String title, final String message) {
 
         UserService userService = RetrofitClient.getRetrofitInstance().create(UserService.class);
@@ -179,4 +165,5 @@ public class MessageFragment extends Fragment {
             }
         });
     }
+     **/
 }
