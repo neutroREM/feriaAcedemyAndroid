@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
                 dialog.setTitle("Buena");
+
                 dialog.setMessage("La calidad del aire se considera satisfactoria");
                 dialog.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
                     @Override
